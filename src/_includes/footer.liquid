@@ -1,0 +1,29 @@
+<footer data-scroll data-scroll-repeat="true">
+    <div class="footer__one">
+        <span class="canela">Say Hello, I won't bite... 🌟</span>
+        <div class="contact__mail">
+            <a href="mailto:{{ site.socials.email }}" title="Click me to send an email">{{ site.socials.email }}</a>
+        </div>
+    </div>
+    {% assign year = "now" | date: "%Y" %}
+    <div class="footer__two anim">
+        <div>
+            <span>© {{ year }} - Design and Developed By <a href="https://devkrazyykunal.vercel.app/">Krazyy Kunal</a>.</span>
+        </div>
+        <ul>
+            {% for item in site.socials %}
+                {%- comment -%}Exclude figma and email{%- endcomment -%}
+                {% if item[0] == 'figma' %}
+                    {% continue %}
+                {% endif %}
+
+                {% if item[0] == 'email' %}
+                    {% continue %}
+                {% endif %}
+                <li title="{{ item[0] }}">
+                    <a href="{{ item[1] }}">{{ item[0] }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</footer>
